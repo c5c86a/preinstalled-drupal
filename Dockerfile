@@ -9,12 +9,13 @@ RUN ifconfig eth0 | grep "inet addr" | cut -d ':' -f 2 | cut -d ' ' -f 1 > /host
 
 RUN apt-get -qqy update && \
     dpkg-divert --local --rename --add /sbin/initctl && \
-    ln -sf /bin/true /sbin/initctl  
+    ln -sf /bin/true /sbin/initctl && \
+    apt-get -qy install curl
 
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 
 # Additional base packages
-RUN apt-get -qy install git vim-tiny curl wget pwgen \
+RUN apt-get -qy install git vim-tiny wget pwgen \
   mysql-client mysql-server \
   apache2 libapache2-mod-php5 php5-mysql php5-gd php5-curl \
   python-setuptools \
@@ -55,13 +56,9 @@ ARG DRUPAL_DOCROOT=/var/www/html
   # D) Pull The entire Drupal site from a Repo, default is master branch
   #DRUPAL_GIT_REPO=https://USER:PASSWORD@example.org/path/something
 ARG DRUPAL_GIT_BRANCH=master
-
-  ### Run an 'install profile': standard or custom?
+  #DRUPAL_INSTALL_REPO=https://github.com/Boran/drupal-profile1.git
 ARG DRUPAL_INSTALL_PROFILE=standard
 ARG DRUPAL_INSTALL_PROFILE_BRANCH=master
-  # Example custom profile: pull it from git
-  #DRUPAL_INSTALL_PROFILE=boran1
-  #DRUPAL_INSTALL_REPO=https://github.com/Boran/drupal-profile1.git
   # During build test: copy in directly
   #ADD ./drupal-profile1      /var/www/html/profiles/boran1
 
