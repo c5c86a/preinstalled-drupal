@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Test the API of your drupal",
   "scripts": {
-    "test-integration": "mocha 'schema/**/*.integration.spec.js'",
+    "test-integration": "mocha 'schema/**/*.integration.spec.js'"
   },
   "dependencies": {
     "express-graphql": "^0.6.1",
