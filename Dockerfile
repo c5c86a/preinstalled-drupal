@@ -102,7 +102,6 @@ ADD ./files/init.d/*         /etc/init.d/
 ADD ./files/foreground.sh    /etc/apache2/foreground.sh
 ADD ./ubuntu1404/000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD ./ubuntu1404/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
-ADD ./gitwrap.sh /gitwrap.sh
 ADD ./start.sh /start.sh
 
 #VOLUME ["/var/www/html", "/data"]
