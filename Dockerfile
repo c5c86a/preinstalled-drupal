@@ -115,8 +115,8 @@ RUN mkdir -p /opt/drupal-make
 
 COPY install/ /opt/install/
 RUN ls -la /opt/install
-RUN mv /opt/install/drupal.make /opt/drush-make/drupal.make || echo "missing install/drupal.make" && exit 1
-RUN mv /opt/install/composer.json /var/www/html/composer.json || echo "skipping composer due to missing install/composer.json"
+RUN cp /opt/install/drupal.make /opt/drush-make/drupal.make || echo "missing install/drupal.make" && exit 1
+RUN cp /opt/install/composer.json /var/www/html/composer.json || echo "skipping composer due to missing install/composer.json"
 COPY wait-for-port.sh /wait-for-port.sh
 COPY log.sh /log.sh
 
@@ -125,7 +125,7 @@ RUN chmod 777 /log.sh
 ###################################################################
 RUN cd /var && bash /start.sh
 # while installing drupal in the background, in parallel we are installing packaging at the following of tests
-RUN bash -c "mv /opt/install/package.json /opt/module/test/package.json && cd /opt/module/test && npm install cd -" || echo "skipping nodejs due to missing install/package.json"
+RUN bash -c "cp /opt/install/package.json /opt/module/test/package.json && cd /opt/module/test && npm install cd -" || echo "skipping nodejs due to missing install/package.json"
 
 RUN cd / && ifconfig && ./wait-for-port.sh 80 300 && sleep 20
 # commented the following as its error can be ignored
