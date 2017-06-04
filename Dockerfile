@@ -107,7 +107,7 @@ ADD ./start.sh /start.sh
 WORKDIR /var
 # Automate starting of mysql+apache, allow bash for debugging
 RUN chmod 755 /start.sh /etc/apache2/foreground.sh
-EXPOSE 80
+EXPOSE 80 9999
 
 RUN mkdir -p /opt/install
 RUN mkdir -p /opt/module/test
@@ -134,4 +134,5 @@ RUN cd / && ifconfig && ./wait-for-port.sh 80 300 && sleep 20
 RUN supervisorctl stop httpd postfix mysqld
 
 CMD ["supervisord", "-c", "/etc/supervisord.conf", "-n"]
+HEALTHCHECK CMD curl -f http://$(cat /host) || exit 1
 
