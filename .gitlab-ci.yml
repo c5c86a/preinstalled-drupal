@@ -1,0 +1,19 @@
+image: docker:latest
+variables:
+  DOCKER_DRIVER: overlay
+  DOCKER_HOST: tcp://docker:2375
+services:
+  - docker:dind
+
+test_job:
+  stage: test
+  script:
+    - docker pull nicosmaris/preinstalled-drupal
+    - docker create --name drupal --hostname drupal -p 0.0.0.0:80:8003 nicosmaris/preinstalled-drupal
+    - docker cp . drupal:/opt/module
+    - docker start drupal
+    - sleep 10
+    - docker logs drupal
+    - docker exec -i drupal ps -ef
+    - docker exec -i drupal bash /opt/module/post-install.sh
+    - docker exec -i drupal bash /opt/module/test.sh
