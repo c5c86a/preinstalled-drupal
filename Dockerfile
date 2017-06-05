@@ -120,6 +120,10 @@ RUN cp /opt/install/composer.json /var/www/html/composer.json || echo 'skipping 
 COPY wait-for-port.sh /wait-for-port.sh
 COPY log.sh /log.sh
 
+RUN wget http://codeception.com/codecept.phar
+RUN chmod +x codecept.phar
+RUN mv codecept.phar /usr/local/bin/codecept
+
 RUN chmod 777 /wait-for-port.sh
 RUN chmod 777 /log.sh
 ###################################################################
