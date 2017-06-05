@@ -111,12 +111,12 @@ EXPOSE 80 9999
 
 RUN mkdir -p /opt/install
 RUN mkdir -p /opt/module/test
-RUN mkdir -p /opt/drupal-make
+RUN mkdir -p /opt/drush-make
 
 COPY install/ /opt/install/
 RUN ls -la /opt/install
 RUN cp /opt/install/drupal.make /opt/drush-make/drupal.make || bash -c "echo 'missing install/drupal.make' && exit 1"
-RUN bash -c "cp /opt/install/composer.json /var/www/html/composer.json || echo 'skipping composer due to missing install/composer.json'"
+RUN cp /opt/install/composer.json /var/www/html/composer.json || echo 'skipping composer due to missing install/composer.json'
 COPY wait-for-port.sh /wait-for-port.sh
 COPY log.sh /log.sh
 
