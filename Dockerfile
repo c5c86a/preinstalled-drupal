@@ -124,6 +124,17 @@ RUN wget http://codeception.com/php54/codecept.phar
 RUN chmod +x codecept.phar
 RUN mv codecept.phar /usr/local/bin/codecept
 
+# install Xdebug, from https://xdebug.org/docs/install
+RUN pecl install xdebug \
+  && docker-php-ext-enable xdebug
+
+# enable Xdebug remote debugging
+RUN { \
+		echo 'xdebug.remote_enable=true'; \
+		echo 'xdebug.remote_host=10.254.254.254'; \
+    echo 'memory_limit = 1024M'; \
+	} >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 RUN chmod 777 /wait-for-port.sh
 RUN chmod 777 /log.sh
 ###################################################################
