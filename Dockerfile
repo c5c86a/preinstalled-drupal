@@ -17,7 +17,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 # Additional base packages
 RUN apt-get -qy install git vim-tiny wget pwgen \
   mysql-client mysql-server \
-  apache2 libapache2-mod-php5 php5-mysql php5-gd php5-curl php5.6-xml \
+  apache2 libapache2-mod-php5 php5-mysql php5-gd php5-curl \
   python-setuptools \
   postfix \
   nodejs build-essential \
