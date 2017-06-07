@@ -11,7 +11,15 @@
         "guzzlehttp/guzzle": ">=4.1.4 <7.0",
         "mcustiel/phiremock-codeception-extension": "1.2.4",
         "codeclimate/php-test-reporter": "dev-master",
-        "ext-xdebug": "2.*"
+        "ext-xdebug": "2.*",
+    },
+    "scripts": {
+        "post-install-cmd": [
+          "Codeception\\c3\\Installer::copyC3ToRoot"
+        ],
+        "post-update-cmd": [
+          "Codeception\\c3\\Installer::copyC3ToRoot"
+        ]
     }
 }
 
