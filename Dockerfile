@@ -125,6 +125,7 @@ RUN chmod +x codecept.phar
 RUN mv codecept.phar /usr/local/bin/codecept
 
 # install Xdebug, from https://xdebug.org/docs/install
+COPY docker-php-ext-* /usr/local/bin/
 RUN pecl install xdebug \
   && docker-php-ext-enable xdebug
 
