@@ -10,8 +10,7 @@
         "codeception/c3": "2.*",
         "guzzlehttp/guzzle": ">=4.1.4 <7.0",
         "mcustiel/phiremock-codeception-extension": "1.2.4",
-        "codeclimate/php-test-reporter": "dev-master",
-        "ext-xdebug": "2.*"
+        "codeclimate/php-test-reporter": "dev-master"
     }
 }
 
