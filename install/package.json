@@ -1,0 +1,19 @@
+{
+  "name": "testdrupalapi",
+  "version": "1.0.0",
+  "description": "Test the API of your drupal",
+  "scripts": {
+    "test-integration": "mocha './**/*.integration.spec.js'"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "lodash.get": "^4.4.2",
+    "request-promise": "^4.1.1",
+    "request": "^2.79.0"
+    "babel-register": "^6.22.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0"
+  }
+}
