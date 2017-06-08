@@ -125,7 +125,7 @@ RUN chmod 777 /log.sh
 ###################################################################
 RUN cd /var && bash /start.sh
 # while installing drupal in the background, in parallel we are installing packaging at the following of tests
-RUN bash -c "cp /opt/install/package.json /opt/module/test/package.json && cd /opt/module/test && npm install cd -" || echo "skipping nodejs due to missing install/package.json"
+RUN bash -c "cp /opt/install/package.json /opt/module/test/package.json && cd /opt/module/test && npm install && cd -" || echo "skipping nodejs due to missing install/package.json"
 
 RUN cd / && ifconfig && ./wait-for-port.sh 80 300 && sleep 20
 # commented the following as its error can be ignored
