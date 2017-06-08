@@ -135,7 +135,7 @@ RUN { \
 		echo 'xdebug.remote_enable=true'; \
 		echo 'xdebug.remote_host=10.254.254.254'; \
     echo 'memory_limit = 1024M'; \
-	} >> /etc/php5/cli/conf.d/docker-php-ext-xdebug.ini
+	} >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 RUN chmod 777 /wait-for-port.sh
 RUN chmod 777 /log.sh
