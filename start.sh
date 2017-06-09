@@ -281,9 +281,9 @@ fi
 
 # Is a custom script visible (can be added by inherited images)
 # If any building is done in there, augment $buildstat there too.
-if [ -f /var/www/html/composer.json ] ; then
+if [ -f /opt/drush-make/custom.sh ] ; then
   cd /var/www/html
-  composer install
+  bash /opt/drush-make/custom.sh
   cd - 
 fi
 
